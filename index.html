@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Dashboard</title>
+    <link rel="shortcut icon" href="img/icons/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-div-1">
+        <h1>
+          Inventory Deshboard <img class="logo" src="./img/logo.png" alt="" />
+        </h1>
+        <h3>Total de Itens Cadastrados: <span>1280</span></h3>
+      </div>
+
+      <div class="header-div-2">
+        <h3>Olá, Admin!</h3>
+        <img src="./img/usuario.png" alt="" />
+      </div>
+    </header>
+    <main>
+      <div class="cadastrar-produtos">
+        <div class="cadastrar-produtos-titulo">Cadastrar Produto</div>
+        <div>
+          <input
+            type="text"
+            placeholder="Nome do Produto"
+            name="NomePro"
+            id="valorPro"
+          />
+          <input
+            type="number"
+            placeholder="Valor do Produto"
+            name="ValorPro"
+            id="valorPro"
+          />
+          <input
+            type="number"
+            placeholder="Quantidade"
+            name="ValorPro"
+            id="valorPro"
+          />
+          <input type="button" value="Categoria ⇲" />
+          <input class="botao-adicionar" type="button" value="Adicionar" />
+        </div>
+      </div>
+      <div class="filtros">
+        <div class="busca-div">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="{1.5}"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+            />
+          </svg>
+          <input class="campo-busca" type="text" name="" id="" />
+        </div>
+        <div class="botoes-categorias">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="{1.5}"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"
+              />
+            </svg>
+            <input type="button" value="Todos" />
+          </div>
+        </div>
+      </div>
+      <div class="produtos"></div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
