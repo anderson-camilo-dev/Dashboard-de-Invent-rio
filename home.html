@@ -29,7 +29,7 @@
             type="text"
             placeholder="Nome do Produto"
             name="NomePro"
-            id="valorPro"
+            id="nomePro"
           />
           <input
             type="number"
@@ -41,10 +41,15 @@
             type="number"
             placeholder="Quantidade"
             name="ValorPro"
-            id="valorPro"
+            id="quantidadePro"
           />
-          <input type="button" value="Categoria ⇲" />
-          <input class="botao-adicionar" type="button" value="Adicionar" />
+          <input
+            type="text"
+            name="Categoria"
+            id="categoriaPro"
+            placeholder="Categoria"
+          />
+          <input class="botao-adicionar" type="button" value="Adicionar" onclick="produtos.Adicionar()" />
         </div>
       </div>
       <div class="filtros">
@@ -63,7 +68,7 @@
               d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
             />
           </svg>
-          <input class="campo-busca" type="text" name="" id="" />
+          <input class="campo-busca" type="text" name="" id="buscaPro" onkeydown="produtos.BuscaProduto()" />
         </div>
         <div class="botoes-categorias">
           <div class="borda-direita-2-div">
@@ -113,15 +118,21 @@
           <div class="borda-esquerda-2-div">
             <button type="button" value="Todos">
               <img src="./img/ee.svg" alt="" />
-              <p>Todos</p>
+              <p>Casa</p>
             </button>
           </div>
         </div>
       </div>
-      <div class="produtos">
-        <img class="caixa-vazia" src="./img/caixa.png" alt="">
-        <h3>Nenhum Produto Cadastrado</h3>
-        <h5>Adicione um produto</h5>
+      <div class="resultado">
+       <div class="vazio">
+            <img class="caixa-vazia" src="./img/caixa.png" alt="" />
+            <h3>Nenhum Produto Encontrado</h3>
+          </div>
+        <div id="produtos-lista" class="produtos">
+          
+        </div>
+      </div>
+      </div>
       </div>
     </main>
 
