@@ -1,13 +1,31 @@
 html,
 body {
-  height: 100%;
-}
-body {
-  background: radial-gradient(circle at top, #1f2a3a, #0d1117);
+  height: 100vh; /* Força a altura exata da janela visual */
+  width: 100vw; /* Força a largura exata da janela visual */
   margin: 0;
+  padding: 0;
+  overflow: hidden; /* Impede QUALQUER rolagem no nível do navegador */
+  background: radial-gradient(circle at top, #1f2a3a, #0d1117);
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Empilha Header e Main */
   font-family: Arial, Helvetica, sans-serif;
   color: #fafafb;
-  padding: 0;
+  box-sizing: border-box;
+}
+
+/* O segredo para não estrapolar */
+main {
+  flex: 1; /* Faz o main ocupar APENAS o que sobra da tela */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  overflow: hidden; /* Garante que nada dentro do main crie rolagem externa */
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 input::-webkit-outer-spin-button,
@@ -17,11 +35,7 @@ input::-webkit-inner-spin-button {
 }
 
 header {
-  background: linear-gradient(
-    145deg,
-    rgba(18, 21, 33, 0.04),
-    rgba(30, 34, 48.2)
-  );
+  background: radial-gradient(circle at top, #1f2a3a, #0d1117);
   margin: 0;
   padding: 0;
   display: grid;
@@ -64,9 +78,6 @@ header img {
   margin: auto;
 }
 
-main {
-  padding: 16px 24px;
-}
 .cadastrar-produtos {
   border: solid 2px #393e4c;
   padding: 12px;
@@ -218,6 +229,7 @@ div .botao-adicionar:not(:focus) {
 }
 .botoes-categorias div:hover {
   border: solid 2px #555d72;
+  background-color: #393e4c;
 }
 
 .botoes-categorias div button p {
@@ -235,34 +247,31 @@ div .botao-adicionar:not(:focus) {
   border-radius: 0 4px 4px 0;
 }
 
-.resultado{
-  margin: auto;
+.resultado {
   width: 100%;
   height: 70vw;
   overflow-y: auto;
   display: grid;
-  text-align: center;
+  gap: 12px;
+  grid-template-columns: repeat(1, 1fr);
   
 }
-
-@media (min-width: 768px) {
+@media (min-width: 700px){
   .resultado{
-    /* Muda para 2 colunas */
-    height: 28vw;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-.vazio{
-  color: #393e4f;
+@media (min-width: 1000px){
+  .resultado{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
-.vazio::-webkit-scrollbar {
-  display: none; /* Para Chrome, Safari e Edge */
+@media (min-width: 1300px){
+  .resultado{
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-.resultado::-webkit-scrollbar {
-  display: none; /* Para Chrome, Safari e Edge */
-}
-.produtos::-webkit-scrollbar {
-  display: none; /* Para Chrome, Safari e Edge */
-}
+
 .logo {
   width: 24px;
 }
@@ -279,41 +288,6 @@ svg {
   max-width: 24px;
 }
 
-.caixa-vazia {
-  width: 30%;
-  margin: auto;
-}
-
-.produtos {
-  width: 100%;
-  height: 70vw;
-  overflow-y: auto;
-}
-
-@media (min-width: 768px) {
-  .produtos {
-    /* Muda para 2 colunas */
-    height: 28vw;
-  }
-}
-.produtos {
-  display: grid;
-  gap: 24px;
-}
-.cheio {
-  background: linear-gradient(
-    145deg,
-    rgba(30, 36, 52, 0.04),
-    rgba(42, 47, 65.2, 0.5),
-    rgba(30, 36, 52, 0.04)
-  );
-  border: solid 2px #555d72;
-  border-radius: 10px;
-  max-width: 22rem;
-  max-height: 10rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
 .produto-card h1,
 h2,
 h4 {
@@ -321,13 +295,19 @@ h4 {
 }
 .produto-card h1 {
   border-bottom: solid 2px #555d72;
+  text-align: center;
 }
 .produto-card h2,
 h4 {
   font: normal 12pt Arial;
 }
 .produto-card {
-  padding: 12px;
+  padding: 0 24px;
+  border: solid 2px #bbbbbb;
+  height: 10rem;
+  width: 16rem;
+  margin: auto;
+  border-radius: 12px;
 }
 
 .produto-card div {
@@ -338,6 +318,7 @@ h4 {
   grid-template-columns: 1fr 1fr;
   width: 100%;
   gap: 10px;
+ 
 }
 .botoes-modificar button {
   background: linear-gradient(
@@ -360,16 +341,65 @@ h4 {
   );
   color: #bbbbbb;
 }
-
-.cheio img {
-  width: 120px;
+.resultado {
   margin: auto;
+  width: 98%;
+  height: 100%;
+}
+.resultado::-webkit-scrollbar {
+  display: none;
 }
 
-@media (min-width: 768px) {
-  .produtos {
+.vazio img {
+  width: 30%;
+}
+.modal {
+  /* O Pulo do Gato: Tira o modal do fluxo normal e fixa na tela */
+  position: fixed; 
+  bottom: 20px;    /* Distância do fundo */
+  right: 20px;     /* Distância da direita (o canto que você quer) */
+  z-index: 1000;   /* Garante que ele fique por cima dos produtos */
+  
+  /* Seus estilos de design */
+  background: linear-gradient(145deg, rgba(30, 36, 52, 0.95), rgba(42, 47, 65, 1));
+  max-width: 350px; /* Um pouco maior para caber o layout da imagem */
+  width: 90%;      /* Responsivo para telas menores */
+  border: solid 2px #393e4c;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+  
+  /* Começa escondido */
+  display: none; 
+}
+.modal-body {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+}
+
+.modal-body input {
+    padding: 8px;
+    background: #0d1117;
+    border: 1px solid #393e4c;
+    color: white;
+    border-radius: 4px;
+}
+.btn-cancelar{
+     background-color: #393e4c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.btn-salvar {
+  
+    background-color: #286b33;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
 }

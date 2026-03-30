@@ -13,7 +13,7 @@
         <h1>
           Inventory Deshboard <img class="logo" src="./img/logo.png" alt="" />
         </h1>
-        <h3>Total de Itens Cadastrados: <span>1280</span></h3>
+        <h3>Total de Itens Cadastrados: <span class="TotalDeItens"> </span></h3>
       </div>
 
       <div class="header-div-2">
@@ -72,7 +72,7 @@
         </div>
         <div class="botoes-categorias">
           <div class="borda-direita-2-div">
-            <button type="button" value="Todos">
+            <button class="todos" type="button" value="Todos" onclick="produtos.FiltroTipo('todos')">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -91,7 +91,7 @@
             </button>
           </div>
           <div>
-            <button type="button" value="Todos">
+            <button  class="eletronicos" type="button" value="Todos" onclick="produtos.FiltroTipo('eletronicos')">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -110,13 +110,13 @@
             </button>
           </div>
           <div>
-            <button type="button" value="Todos">
+            <button class="moda" type="button" value="Todos"onclick="produtos.FiltroTipo('moda')">
               <img src="./img/e.svg" alt="" />
               <p>Moda</p>
             </button>
           </div>
           <div class="borda-esquerda-2-div">
-            <button type="button" value="Todos">
+            <button class="casa" type="button" value="Todos"onclick="produtos.FiltroTipo('casa')">
               <img src="./img/ee.svg" alt="" />
               <p>Casa</p>
             </button>
@@ -124,16 +124,31 @@
         </div>
       </div>
       <div class="resultado">
-       <div class="vazio">
-            <img class="caixa-vazia" src="./img/caixa.png" alt="" />
-            <h3>Nenhum Produto Encontrado</h3>
-          </div>
-        <div id="produtos-lista" class="produtos">
-          
+       <div class="cheio"></div>
+        
+      </div>
+      </div>
+      </div>
+
+      <div id="modalEdicao" class="modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="produtos.FecharModalEdicao()">&times;</span>
+    <div class="modal-header">
+      <h2>Editar Produto</h2>
+      
+    </div>
+    <div class="modal-body">
+      <input type="text" id="editNome" placeholder="Nome do Produto">
+      <input type="number" id="editValor" placeholder="Valor">
+      <input type="number" id="editQuantidade" placeholder="Quantidade">
+      <input type="text" id="editCategoria" placeholder="Categoria">
+    </div>
+        <div class="modal-footer">
+          <button class="btn-cancelar" onclick="produtos.FecharModalEdicao()">Cancelar</button>
+          <button class="btn-salvar" onclick="produtos.SalvarEdicao()">Salvar Alterações</button>
         </div>
-      </div>
-      </div>
-      </div>
+  </div>
+    </div>
     </main>
 
     <script src="./script.js"></script>
